@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110803001258) do
+ActiveRecord::Schema.define(:version => 20110803002548) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -67,6 +67,9 @@ ActiveRecord::Schema.define(:version => 20110803001258) do
     t.string   "last_login_ip"
     t.text     "avatar_meta"
     t.boolean  "receive_email",       :default => false
+    t.string   "email_token"
   end
+
+  add_index "users", ["email_token"], :name => "index_users_on_email_token", :unique => true
 
 end
